@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness First</title>
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="{% static 'app/css/program.css' %}" />
+    
+    <!-- font awesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+
+</head>
+
+<body>
+    <!-- header section starts -->
+
+    <header class="header">
+        <a href="#" class="logo"><i class="fa-solid fa-seedling"></i> Fitness <span>first</span></a>
+
+        <div class="icons">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn">Logout </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn">Join Us </a>
+            {% endif %}
+            
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </header>
+
+     <!-- program section starts -->
+
+     <section class="programs">
+
+        <div class="container">
+
+            <h3 class="title">Featured <span>Programs</span></h3>
+            
+            <div class="program-container">
+                {% for program in program %}
+    
+                <div class="program" data-name="s-{{ forloop.counter }}">
+                    <img src="{{ program.image.url }}" alt="{{ program.program_title }}">
+                    <h3>{{program.program_title}}</h3>                    
+                </div>
+    
+                {% comment %} <div class="program" data-name="s-2">
+                    <img src="{% static 'images/Feature-classes.jpeg' %}" alt="">
+                    <h3>Strength Training</h3>
+                </div>
+    
+                <div class="program" data-name="s-3">
+                    <img src="{% static 'images/cardio1.jpg' %}" alt="">
+                    <h3>Cardio Training</h3>
+                </div>
+    
+                <div class="program" data-name="s-4">
+                    <img src="{% static 'images/cross.jpg' %}" alt="">
+                    <h3>Crossfit Training</h3>
+                </div>
+    
+                <div class="program" data-name="s-5">
+                    <img src="{% static 'images/prog2.jpg' %}" alt="">
+                    <h3>Body Muscle Training</h3>
+                </div>
+    
+                <div class="program" data-name="s-6">
+                    <img src="{% static 'images/Feature-classes-2.jpeg' %}" alt="">
+                    <h3>Aerobics</h3>
+                </div> {% endcomment %}
+                {% endfor %}
+            </div>
+    
+        </div>
+
+        <div class="program-preview">
+            {% for program in program %}
+            <div class="preview" data-target="s-{{ forloop.counter }}">
+                <i class="fas fa-times"></i>
+                <img src="{{ program.image.url }}" alt="{{ program.program_title }}">
+                <h3>{{program.program_title}}</h3>
+                <div class="price">₹{{program.price}}</div>
+
+                <div class="payment">
+                    <h3 class="heading">Payment Invoice</h3>
+                    <p><span>Amount to Pay:</span> ₹{{program.price}}</p>
+                    <form action={% url 'process_payment' %} method="post">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
+                        data-description="Pay To Fitness First"
+                        data-amount="₹{{program.price}}"
+                        data-locale="auto"
+                        data-currency="inr"
+                        >
+                    </script>
+                    </form>
+                    {% comment %} <p>powered by <span>STRIPE</span></p> {% endcomment %}
+                </div>
+            </div>
+        
+            {% comment %} <div class="preview" data-target="s-2">
+                <i class="fas fa-times"></i>
+                <img src="{% static 'images/Feature-classes.jpeg' %}" alt="">
+                <h3>Strength Training</h3>
+                <div class="price">₹2000</div>
+                <div class="payment">
+                    <h3 class="heading">Payment Invoice</h3>
+                    <p><span>Amount to Pay:</span> ₹2000</p>
+                    <form action={% url 'process_payment' %} method="post">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
+                        data-description="Pay To Fitness First"
+                        data-amount="₹1500"
+                        data-locale="auto"
+                        data-currency="inr"
+                        >
+                    </script>
+                    </form>
+                    <p>powered by <span>STRIPE</span></p>
+                </div>
+            </div>
+        
+            <div class="preview" data-target="s-3">
+                <i class="fas fa-times"></i>
+                <img src="{% static 'images/cardio1.jpg' %}" alt="">
+                <h3>Cardio Training</h3>
+                <div class="price">₹2000</div>
+                <div class="payment">
+                    <h3 class="heading">Payment Invoice</h3>
+                    <p><span>Amount to Pay:</span> ₹2000</p>
+                    <form action={% url 'process_payment' %} method="post">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
+                        data-description="Pay To Fitness First"
+                        data-amount="₹1500"
+                        data-locale="auto"
+                        data-currency="inr"
+                        >
+                    </script>
+                    </form>
+                    <p>powered by <span>STRIPE</span></p>
+                </div>
+            </div>
+        
+            <div class="preview" data-target="s-4">
+                <i class="fas fa-times"></i>
+                <img src="{% static 'images/cross.jpg' %}" alt="">
+                <h3>Crossfit Training</h3>
+                <div class="price">₹2000</div>
+                <div class="payment">
+                    <h3 class="heading">Payment Invoice</h3>
+                    <p><span>Amount to Pay:</span> ₹2000</p>
+                    <form action={% url 'process_payment' %} method="post">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
+                        data-description="Pay To Fitness First"
+                        data-amount="₹1500"
+                        data-locale="auto"
+                        data-currency="inr"
+                        >
+                    </script>
+                    </form>
+                    <p>powered by <span>STRIPE</span></p>
+                </div>
+            </div>
+        
+            <div class="preview" data-target="s-5">
+                <i class="fas fa-times"></i>
+                <img src="{% static 'images/prog2.jpg' %}" alt="">
+                <h3>Body Muscle Training</h3>
+                <div class="price">₹2000</div>
+                <div class="payment">
+                    <h3 class="heading">Payment Invoice</h3>
+                    <p><span>Amount to Pay:</span> ₹2000</p>
+                    <form action={% url 'process_payment' %} method="post">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
+                        data-description="Pay To Fitness First"
+                        data-amount="₹2000"
+                        data-locale="auto"
+                        data-currency="inr"
+                        > 
+                    </script>
+                    </form>
+                    <p>powered by <span>STRIPE</span></p>
+                </div>
+            </div>
+        
+            <div class="preview" data-target="s-6">
+                <i class="fas fa-times"></i>
+                <img src="{% static 'images/Feature-classes-2.jpeg' %}" alt="">
+                <h3>Aerobics</h3>
+                <div class="price">₹2000</div>
+                <div class="payment">
+                    <h3 class="heading">Payment Invoice</h3>
+                    <p><span>Amount to Pay:</span> ₹2000</p>
+                    <form action={% url 'process_payment' %} method="post">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
+                        data-description="Pay To Fitness First"
+                        data-amount="₹2000"
+                        data-locale="auto"
+                        data-currency="inr"
+                        >
+                    </script>
+                    </form>
+                    <p>powered by <span>STRIPE</span></p>
+                </div>
+            </div> {% endcomment %}
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <!-- programs section ends -->
+
+
+    <!-- footer section starts -->
+
+<section id="contact us" class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h1>About Us</h1>
+            <div class="text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Explicabo vero velit eum accusantium ullam, ratione deserunt 
+                placeat pariatur ut sit neque consequuntur eveniet</p>
+            </div>
+            <div class="icon">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@nutriyogheena583"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h1>Contact Info</h1>
+            <div class="icons">
+                <a href="#"><i class="fas fa-map-marker-alt"></i>34 Street Name, city name here,
+                 India</a>
+                <a href="#"><i class="fas fa-phone-alt"></i>+91 9619786756</a>
+                <a href="#"><i class="fas fa-envelope"></i>example@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h1>Quick Links</h1>
+            <div class="icons">
+                <a href="#">Home</a>
+                <a href="#feature">Services</a>
+                <a href="#expert">Team</a>
+                <a href="#youtube">Channel</a>
+                <a href="#contact us">Contact Us</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="credit">Created by <span>Adarsh</span> | all right reserved</div>
+
+</section>
+
+<!-- footer section ends -->
+
+<script src="{% static 'app/js/programs.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Register Form</title>
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="{% static 'registration/login.css' %}" />
+
+    <!-- Font Awesome cdn file link -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+  </head>
+  <body style="background: linear-gradient(rgba(19, 19, 20, 0.7),rgba(19, 19, 20, 0.7)),url('{% static 'images/Fitness3.jpg' %}');">
+    
+    
+
+    <div class="header">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+
+            <!-- For login form -->
+
+            <form action="{% url 'login' %}" method="post" class="input-group" id="Login">
+                {% csrf_token %}
+                <input type="email" name="email" class="input-filed" placeholder="Email" required>
+                <input type="password" name="password" class="input-filed" placeholder="Password" required>
+                <br><br>
+                <a href="{% url 'password_reset' %}">Forgot Password?</a><br><br><br>
+                
+                {% for field in login_form %}
+                  <p>
+                    {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                  </p>
+                {% endfor %}
+
+                {% if login_form.non_field_errors %}
+                  <div style="color: red">
+                    <p>{{login_form.non_field_errors | striptags}}</p>
+                  </div>
+                {% endif %}
+                
+
+                <button type="submit" class="submit-btn">Log in</button>
+            </form>
+
+             <!-- For register form -->
+
+             <form action="{% url 'signup' %}" method="post" class="input-group" id="Register">
+                {% csrf_token %}
+                <input type="text" name="first_name" class="input-filed" placeholder="First Name" required>
+                <input type="text" name="last_name" class="input-filed" placeholder="Last Name" required>
+                <input type="email" name="email" class="input-filed" placeholder="Email Id" required>
+                <input type="password" name="password1" class="input-filed" placeholder="Password" required>
+                <input type="password" name="password2" class="input-filed" placeholder="Confirm Password" required>
+                <br><br>
+                
+
+                {% for field in signup_form %}
+                <ul class="cmsg">
+                {% for error in field.errors %}
+                <li style="color: red">{{ error }}</li>
+                {% endfor %}
+                </ul>
+                {% endfor %}
+
+                {% if signup_form.non_field_errors %}
+                <div class="cmsg">
+                <li>{{signup_form.non_field_errors}}</li>
+                </div>
+                {% endif %}
+
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        let x = document.getElementById('Login');
+        let y = document.getElementById('Register');
+        let z = document.getElementById('btn');
+
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px"
+        }
+    </script>
+  </body>
+</html>

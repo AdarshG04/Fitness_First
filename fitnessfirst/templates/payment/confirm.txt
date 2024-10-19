@@ -1,0 +1,16 @@
+{% autoescape off %}
+
+
+Hi {{user.first_name}}
+
+Your payment of ₹{{program.price}} has been completed.
+
+Now you are a member of 
+Enjoy our service.
+
+Sincerely,
+The Fitness First Team
+
+
+
+{% endautoescape %}

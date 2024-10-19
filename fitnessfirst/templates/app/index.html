@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness First</title>
+
+    <!-- Swiper CSS link -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+    <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}" />
+
+    <!-- Font Awesome cdn file link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+</head>
+
+<body>
+    <!-- header section starts -->
+
+    <header class="header">
+        <a href="{% url 'index' %}" class="logo"><i class="fa-solid fa-dumbbell"></i> Fitness <span>First</span></a>
+
+        <nav class="navbar">
+            <a class="nav-link scrollto" href="#">Home</a>
+            <a class="nav-link scrollto" href="#feature">Programs</a>
+            <a class="nav-link scrollto" href="#trainers">Trainers</a>
+            <a class="nav-link scrollto" href="#about us">About Us</a>
+            <a class="nav-link scrollto" href="#blogs">Blogs</a>
+            <a class="nav-link scrollto" href="#contact us">Contact Us</a>
+        </nav>
+
+        <div class="icons">
+            {% if user.is_authenticated %}
+            <a href={% url 'logout' %} class="btn">Logout</a>
+            {% else %}
+            <a href={% url 'login' %} class="btn">Join Us </a>
+            {% endif %}
+
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts -->
+
+    <section id="home" class="home">
+
+        <div class="swiper home-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box" style="background: linear-gradient(rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)),url('{% static 'images/Barbell1.jpg' %}');">
+                    <div class="content">
+                        <h3>Join Fitness First Today</h3>
+                        <p>Raise your fitness routine to the professional standards.</p>
+                        <div class="button">
+                            {% if user.is_authenticated %}
+                                <a href={% url 'program' %} class="btn btn-1">Get Started</a>
+                            {% else %}
+                                <a href={% url 'login' %} class="btn btn-1">Get Started</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+<hr>
+                <div class="swiper-slide box" style="background: linear-gradient(rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)),url('{% static 'images/Fitness4.jpg' %}');">
+                    <div class="content">
+                        <h3>Health is Wealth</h3>
+                        <p>Don’t fret, level up your health and fitness.</p>
+                        <div class="button">
+                            {% if user.is_authenticated %}
+                                <a href={% url 'program' %} class="btn btn-1">Start Today</a>
+                            {% else %}
+                                <a href={% url 'login' %} class="btn btn-1">Start Today</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- feature section starts -->
+
+    <section id="feature" class="feature">
+
+        <h1 class="heading">Featured <span>Classes</span></h1>
+
+        <div class="swiper feature-slider">
+            
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                    <img src="{% static 'images/Feature-classes.jpeg' %}" alt=""></a>  
+                    </div>
+                    <div class="content">
+                        <div class="price">See all</div>
+                        <h3>Strength Training</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/Cardio.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="content">
+                        <div class="price">See all</div>
+                        <h3>Cardio Training</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/Feature-classes.jpeg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="price">See all</div>
+                        <h3>Crossfit Training</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/Strength-2.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="price">See all</div>
+                        <h3>Upper Body Workout</h3>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/Calisthenics.jpg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="price">See all</div>
+                        <h3>Calisthenics</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="icons">
+            {% if user.is_authenticated %}
+                <a href="{% url 'program' %}" class="btn">See all </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn">See all </a>
+            {% endif %} 
+        </div>
+
+    </section>
+    <!-- feature section ends -->
+
+    <!-- trainer section starts -->
+
+    <section id="trainers" class="trainers">
+         
+        <h1 class="heading">Certified <span>trainers</span></h1>
+
+        <div class="swiper trainer-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/Fitness2.jpg' %}" alt="">
+                    </div>
+                    <div class="name">
+                        <h1>John Smith</h1>
+                        <p>Assistant Trainer</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/Strength.jpg' %}" alt="">
+                    </div>
+                    <div class="name">
+                        <h1>Harry Page</h1>
+                        <p>Senior Trainer</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/trainer-2.jpeg' %}" alt="">
+                    </div>
+                    <div class="name">
+                        <h1>Anna Watson</h1>
+                        <p>Diet Specialist</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/trainer.jpeg' %}" alt="">
+                    </div>
+                    <div class="name">
+                        <h1>Bruno Stark</h1>
+                        <p>Senior Trainer</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- trainer section ends -->
+
+    <!-- testimonial section starts -->
+
+    <section id="about us" class="testimonial">
+
+        <h1 class="heading">Testimonial</h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'images/New.jpg' %}" alt="">
+                </div>
+                <div class="name">
+                    <h1>Tony Evans</h1>
+                    <p>Senior Engineer. <span>Amazon</span></p>
+                </div>
+                <p>“High Quality, Diverse Group Classes, Equipments in good condition. People are nice to one another like in a friendly community”</p>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'images/t-2.jpg' %}" alt="">
+                </div>
+                <div class="name">
+                    <h1>Mike Henry</h1>
+                    <p>Senior Manager. <span>Microsoft</span></p>
+                </div>
+                <p>Hands down, best choice I have made training at Fitness First. Very friendly team who make me actually want to go train. I look forward to walking through the doors and always feel amazing when I leave.</p>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'images/t-3.jpg' %}" alt="">
+                </div>
+                <div class="name">
+                    <h1>Jane Furry</h1>
+                    <p>CEO. <span>Barclays</span></p>
+                </div>
+                <p>This is a fantastic gym!! All the trainers are super nice and take an interest in you no matter what fitness level you’re at. I really like how they give me tips and tricks to get the most out of every workout.</p>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <!-- testimonial section ends -->
+
+    <!-- blogs section starts -->
+    
+    <section id="blogs" class="blogs">
+
+        <h1 class="heading">our <span>blogs</span></h1>
+
+        <div class="swiper blogs-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/blog-1.jpeg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Aerobics</h3>
+                        <span><i class="fad fa-calendar-alt"></i>April 30, 2023</span>
+                        <p>Aerobic exercise provides cardiovascular conditioning. It is recommended that you talk with your physician before you start an exercise program. Good for people who suffer from diabetes, hypertension, heart disease, or other health conditions.</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/blog-2.jpeg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Yoga</h3>
+                        <span><i class="fad fa-calendar-alt"></i>April 22, 2023</span>
+                        <p>Yoga is an ancient and complex practice, rooted in Indian philosophy. It began as a spiritual practice but has become popular as a way of promoting physical and mental well-being.</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/blog-3.jpeg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Muscle Building</h3>
+                        <span><i class="fad fa-calendar-alt"></i>April 25, 2023</span>
+                        <p>Strength training, or resistance training, is the primary form of exercise for muscle building. It involves using weights, machines, or your own body weight to stress your muscles, pushing them past their limits. </p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="{% static 'images/blog-4.jpeg' %}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>Meditation</h3>
+                        <span><i class="fad fa-calendar-alt"></i>April 20, 2023</span>
+                        <p>Meditation is a technique used for thousands of years to develop awareness of the present moment. It can involve practices to sharpen focus and attention, connect to the body and breath, develop acceptance of difficult emotions, and even alter consciousness.</p>
+                    </div>
+                    {% comment %} <div class="button">
+                        <a href="#" class="btn">Read More</a>
+                    </div> {% endcomment %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- blogs section ends -->
+
+    <!-- footer section starts -->
+
+    <section id="contact us" class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h1>About</h1>
+                <div class="text">
+                    <p>Fitness First is the only advanced personal trainer program that offers you low-cost tuition, fast test results, and holistic career development. Becoming a FITNESS Certified Advanced Personal Trainer is the cornerstone of your success. Make an investment in yourself and become a FITNESS First Certified Personal Trainer.</p>
+                </div>
+                <div class="icon">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h1>Contact Info</h1>
+                <div class="icons">
+                    <a href="#"><i class="fas fa-map-marker-alt"></i>34 Street Name, Mumbai,
+                     India</a>
+                    <a href="#"><i class="fas fa-phone-alt"></i>+91 9619786756</a>
+                    <a href="#"><i class="fas fa-envelope"></i>fitnessfirst54@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h1>Quick Links</h1>
+                <div class="icons">
+                    <a href="#">Home</a>
+                    <a href="#feature">Programs</a>
+                    <a href="#blogs">Blogs</a>
+                    <a href="#about us">About Us</a>
+                    <a href="#contact us">Contact Us</a>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="credit">Created by <span>Adarsh</span> | all right reserved</div>
+
+    </section>
+
+    <!-- footer section ends -->
+
+
+    <!-- Swiper script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS File Link -->
+<script src="{% static 'app/js/script.js' %}"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+
+<!-- Profile section -->
+<section class="profile" style="margin-top: 90px;">
+    <h1 class="heading">Account <span>Details</span></h1>
+    <hr>
+    <div class="box-container">
+        <div class="personal">
+            <h1 class="heading">Personal <span>Information</span></h1>
+            <div class="p_info">
+                <div><img src={% static '' %} alt=""></div>
+                <div>
+                    <p class="e"><span>Email: </span></p>
+                    <p><span>Mobile: </span></p>
+                </div>
+            </div>
+            <hr>
+        <div class="second">
+            <div class="address">
+                <h1 class="heading">Address <span>details</span></h1>
+                <div>
+                    <p><span>Primary Address</span></p>
+                </div>
+            </div>
+            <hr>
+            <div class="order">
+                <h1 class="heading">Booking <span>Details</span></h1>
+                <div class="tb">
+                    <div class="r">
+                        <p>Booking Id</p>
+                        <p>Status</p>
+                        <p>invoice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+{% endblock content %}
