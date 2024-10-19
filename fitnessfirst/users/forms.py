@@ -16,28 +16,14 @@ class SignupForm(UserCreationForm):
         fields = ('first_name','last_name', 'email', 'password1', 'password2')
 
     def clean_email(self):
-        email = self.cleaned_data.get('email').lower()  # .get to avoid potential KeyErrors
-        if User.objects.filter(email=email).exists():  # More efficient check
-            raise forms.ValidationError(f'Email {email} is already registered.')
-        return email
+        email = self.cleaned_data['email'].lower()
+        try:
+            user = User.objects.get(email = email)
+        except Exception as e:
+            return email
+        raise forms.ValidationError(f'Email {email} is already exists.')
 
     
-
-# class AccountAuthenticationForm(forms.ModelForm):
-
-# 	password = forms.CharField(label='Password', widget=forms.PasswordInput)
-
-# 	class Meta:
-# 		model = User
-# 		fields = ('email', 'password')
-
-# 	def clean(self):
-# 		if self.is_valid():
-# 			email = self.cleaned_data['email']
-# 			password = self.cleaned_data['password']
-# 			if not authenticate(email=email, password=password):
-# 				raise forms.ValidationError("Invalid login!")
-
 
 class AccountAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -48,12 +34,8 @@ class AccountAuthenticationForm(forms.ModelForm):
 
     # Validate email and password in the clean method
     def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get('email')
-        password = cleaned_data.get('password')
-
-        if email and password:
-            user = authenticate(email=email.lower(), password=password)  # Ensure case-insensitive email matching
-            if not user:
-                raise forms.ValidationError("Invalid login credentials. Please try again.")
-        return cleaned_data
+        if self.is_valid():
+            email = self.cleaned_data['email']
+            password = self.cleaned_data['password']
+            if not authenticate(email=email, password=password):
+                raise forms.ValidationError("Invalid Login!")

@@ -12,8 +12,12 @@ class MyUserManager(BaseUserManager):
         if not first_name:
             raise ValueError("Users must have an first name")
 
-        email = self.normalize_email(email)
-        user = self.model(first_name = first_name, last_name = last_name)
+        # email = self.normalize_email(email)
+        user = self.model(
+            email = self.normalize_email(email),
+            first_name = first_name, 
+            last_name = last_name
+            )
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -45,17 +49,17 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name','last_name']
+    REQUIRED_FIELDS = ['first_name','last_name',]
 
     objects = MyUserManager()
 
-    class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"
-        ordering = ['-date_joined']
+    # class Meta:
+    #     verbose_name = "User"
+    #     verbose_name_plural = "Users"
+    #     ordering = ['-date_joined']
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name} ({self.email})'
+        return self.email
     
     
     # Checking for permission

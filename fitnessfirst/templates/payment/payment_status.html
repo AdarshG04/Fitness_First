@@ -50,7 +50,8 @@
     <div class="c">
         <img src={% static 'images/Fitness.gif' %} alt="">
         <h1 class="heading">Payment <span>Completed.</span></h1>
-        <p>Your payment of <span> ₹{{program.price}}</span> is Successful!!</p>
+        {% comment %} <p>Your payment of <span> ₹{{program.price}}</span> is Successful!!</p> {% endcomment %}
+        <p>Your payment for the <span> Fitness First Membership </span> is Successful!!</p>
         <p>Your booking has been confirmed. Now you are member of Fitness<span> First</span> Team.</p>
         <p>Welcome to Fitness First.</p>
         <a href="{% url 'index' %}" class="btn f">Go to Homepage</a><br>

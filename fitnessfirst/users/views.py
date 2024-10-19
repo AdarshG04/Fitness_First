@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from users.forms import SignupForm, AccountAuthenticationForm
 from users.models import User
+from program.models import MembershipPlan
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
 from django.template.loader import render_to_string
@@ -24,19 +25,19 @@ def index(request):
 
 
 def login_view(request):
-    # user = request.user
+    user = request.user
     if request.user.is_authenticated: 
         return redirect("index")
 
-    if request.method == 'POST':
+    if request.POST:
         form = AccountAuthenticationForm(request.POST)
 
         if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
 
-            if user is not None:
+            if user:
                 login(request, user)
                 messages.success(request, 'Logged in Sucessfully!!')
                 return redirect("index")
@@ -58,6 +59,8 @@ def logout_view(request):
     logout(request)
     messages.success(request, ' Logged out Sucessfully!')
     return redirect("index")
+
+
 
 def signup_view(request):
     user = request.user
@@ -154,4 +157,4 @@ def process_payment(request):
             
             
 
-    return render(request, 'payment/payment_status.html', {'customer':user})
+    return render(request, 'payment/payment_status.html', {'user':user})
