@@ -56,31 +56,8 @@
                     <h3>{{program.program_title}}</h3>                    
                 </div>
     
-                {% comment %} <div class="program" data-name="s-2">
-                    <img src="{% static 'images/Feature-classes.jpeg' %}" alt="">
-                    <h3>Strength Training</h3>
-                </div>
-    
-                <div class="program" data-name="s-3">
-                    <img src="{% static 'images/cardio1.jpg' %}" alt="">
-                    <h3>Cardio Training</h3>
-                </div>
-    
-                <div class="program" data-name="s-4">
-                    <img src="{% static 'images/cross.jpg' %}" alt="">
-                    <h3>Crossfit Training</h3>
-                </div>
-    
-                <div class="program" data-name="s-5">
-                    <img src="{% static 'images/prog2.jpg' %}" alt="">
-                    <h3>Body Muscle Training</h3>
-                </div>
-    
-                <div class="program" data-name="s-6">
-                    <img src="{% static 'images/Feature-classes-2.jpeg' %}" alt="">
-                    <h3>Aerobics</h3>
-                </div> {% endcomment %}
                 {% endfor %}
+
             </div>
     
         </div>
@@ -107,124 +84,9 @@
                         >
                     </script>
                     </form>
-                    {% comment %} <p>powered by <span>STRIPE</span></p> {% endcomment %}
                 </div>
             </div>
         
-            {% comment %} <div class="preview" data-target="s-2">
-                <i class="fas fa-times"></i>
-                <img src="{% static 'images/Feature-classes.jpeg' %}" alt="">
-                <h3>Strength Training</h3>
-                <div class="price">₹2000</div>
-                <div class="payment">
-                    <h3 class="heading">Payment Invoice</h3>
-                    <p><span>Amount to Pay:</span> ₹2000</p>
-                    <form action={% url 'process_payment' %} method="post">
-                        {% csrf_token %}
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
-                        data-description="Pay To Fitness First"
-                        data-amount="₹1500"
-                        data-locale="auto"
-                        data-currency="inr"
-                        >
-                    </script>
-                    </form>
-                    <p>powered by <span>STRIPE</span></p>
-                </div>
-            </div>
-        
-            <div class="preview" data-target="s-3">
-                <i class="fas fa-times"></i>
-                <img src="{% static 'images/cardio1.jpg' %}" alt="">
-                <h3>Cardio Training</h3>
-                <div class="price">₹2000</div>
-                <div class="payment">
-                    <h3 class="heading">Payment Invoice</h3>
-                    <p><span>Amount to Pay:</span> ₹2000</p>
-                    <form action={% url 'process_payment' %} method="post">
-                        {% csrf_token %}
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
-                        data-description="Pay To Fitness First"
-                        data-amount="₹1500"
-                        data-locale="auto"
-                        data-currency="inr"
-                        >
-                    </script>
-                    </form>
-                    <p>powered by <span>STRIPE</span></p>
-                </div>
-            </div>
-        
-            <div class="preview" data-target="s-4">
-                <i class="fas fa-times"></i>
-                <img src="{% static 'images/cross.jpg' %}" alt="">
-                <h3>Crossfit Training</h3>
-                <div class="price">₹2000</div>
-                <div class="payment">
-                    <h3 class="heading">Payment Invoice</h3>
-                    <p><span>Amount to Pay:</span> ₹2000</p>
-                    <form action={% url 'process_payment' %} method="post">
-                        {% csrf_token %}
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
-                        data-description="Pay To Fitness First"
-                        data-amount="₹1500"
-                        data-locale="auto"
-                        data-currency="inr"
-                        >
-                    </script>
-                    </form>
-                    <p>powered by <span>STRIPE</span></p>
-                </div>
-            </div>
-        
-            <div class="preview" data-target="s-5">
-                <i class="fas fa-times"></i>
-                <img src="{% static 'images/prog2.jpg' %}" alt="">
-                <h3>Body Muscle Training</h3>
-                <div class="price">₹2000</div>
-                <div class="payment">
-                    <h3 class="heading">Payment Invoice</h3>
-                    <p><span>Amount to Pay:</span> ₹2000</p>
-                    <form action={% url 'process_payment' %} method="post">
-                        {% csrf_token %}
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
-                        data-description="Pay To Fitness First"
-                        data-amount="₹2000"
-                        data-locale="auto"
-                        data-currency="inr"
-                        > 
-                    </script>
-                    </form>
-                    <p>powered by <span>STRIPE</span></p>
-                </div>
-            </div>
-        
-            <div class="preview" data-target="s-6">
-                <i class="fas fa-times"></i>
-                <img src="{% static 'images/Feature-classes-2.jpeg' %}" alt="">
-                <h3>Aerobics</h3>
-                <div class="price">₹2000</div>
-                <div class="payment">
-                    <h3 class="heading">Payment Invoice</h3>
-                    <p><span>Amount to Pay:</span> ₹2000</p>
-                    <form action={% url 'process_payment' %} method="post">
-                        {% csrf_token %}
-                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
-                        data-key = "pk_test_51Mdu34SA3pGhMbcLx3GQtwaPSiRolqpASGnynGAZTTEiT6jmzo1etjYeeif7VD5KhupkT1FeyOrV1qXxJtPIDU2700EKZfNI05"
-                        data-description="Pay To Fitness First"
-                        data-amount="₹2000"
-                        data-locale="auto"
-                        data-currency="inr"
-                        >
-                    </script>
-                    </form>
-                    <p>powered by <span>STRIPE</span></p>
-                </div>
-            </div> {% endcomment %}
             {% endfor %}
         </div>
 

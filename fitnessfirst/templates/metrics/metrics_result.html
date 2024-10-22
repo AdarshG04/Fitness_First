@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Fitness Metrics</title>
+    <link rel="stylesheet" href="{% static 'metrics/metrics.css' %}">
+</head>
+<body>
+    <h2>Your Fitness Metrics</h2>
+    <p><strong>BMI:</strong> {{ bmi }}</p>
+    <p><strong>BMR:</strong> {{ bmr }} kcal/day</p>
+    <p><strong>Daily Caloric Needs:</strong> {{ caloric_needs }} kcal/day</p>
+    <a href="{% url 'metrics_view' %}">Calculate Again</a>
+</body>
+</html>

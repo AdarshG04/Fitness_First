@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from users.models import User
 from program.models import MembershipPlan
 
 @admin.register(MembershipPlan)
