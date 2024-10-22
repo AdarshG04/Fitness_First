@@ -171,54 +171,22 @@ section{
     
 }
 
+.base .metrics{
+    margin-left: 35rem;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+
 .base h2{
-    font-size: 3rem;
+    font-size: 4rem;
+    padding-bottom: 2rem;
 }
 
 .base p{
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 
-.base .form_page .base_button{
-    font-size: 1.5rem;
-    width: 20%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    background: #f73471;
-    outline: none;
-    border-radius: 30px;
-    margin: auto;
-}
-
-.base .form_page .base_button:hover{
-    background: #ffffff;
-    border: 2px solid black;
-    outline: none;
-    border-radius: 30px;
-    margin: auto;
-}
-
-.base .base_button{
-    font-size: 1.5rem;
-    width: 20%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    background: #f73471;
-    outline: none;
-    border-radius: 30px;
-    margin: auto;
-}
-
-.base .base_button:hover{
-    background: #ffffff;
-    border: 2px solid black;
-    outline: none;
-    border-radius: 30px;
-    margin: auto;
-}
 
 /* ------------------------------------- footer section starts ----------------------------------- */
 

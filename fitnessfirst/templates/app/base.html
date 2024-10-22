@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <title>Fitness First | {% block title %}{% endblock title %}</title> {% endcomment %}
-    {% comment %} {% block title %}Fitness First {% endblock title %} {% endcomment %}
+    <title>Fitness First</title>
+
     <!-- Swiper CSS link -->
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 
     <!-- bootstrap link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> {% endcomment %}
 
     <!-- Custom CSS file link -->
     <link rel="stylesheet" href="{% static 'app/css/base.css' %}" />
-    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}" />
+    {% comment %} <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}" /> {% endcomment %}
 
     <!-- Font Awesome cdn file link -->
 
@@ -33,15 +33,15 @@
      <!-- header section starts -->
 
      <header class="header">
-        <a href="#" class="logo"><i class="fa-solid fa-dumbbell"></i> Fitness <span>first</span></a>
+        <a href="{% url 'index' %}" class="logo"><i class="fa-solid fa-dumbbell"></i> Fitness <span>first</span></a>
 
         <nav class="navbar">
-            <a class="nav-link scrollto" href="#">Home</a>
+            <a class="nav-link scrollto" href="{% url 'index' %}">Home</a>
             <a class="nav-link scrollto" href="#feature">Programs</a>
             <a class="nav-link scrollto" href="#trainers">Trainers</a>
             <a class="nav-link scrollto" href="#about us">About Us</a>
             <a class="nav-link scrollto" href="#blogs">Blogs</a>
-            <a class="nav-link scrollto" href="#contact us">Contact Us</a>
+            <a class="nav-link scrollto" href="{% url 'metrics:calculate_metrics' %}">Metrics</a>
         </nav>
 
         <div class="icons">
@@ -70,9 +70,7 @@
             <div class="box">
                 <h1>About</h1>
                 <div class="text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Explicabo vero velit eum accusantium ullam, ratione deserunt 
-                    placeat pariatur ut sit neque consequuntur eveniet</p>
+                    <p>Fitness First is the only advanced personal trainer program that offers you low-cost tuition, fast test results, and holistic career development. Becoming a Fitness Certified Advanced Personal Trainer is the cornerstone of your success. Make an investment in yourself and become a Fitness First Certified Personal Trainer.</p>
                 </div>
                 <div class="icon">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -85,10 +83,10 @@
             <div class="box">
                 <h1>Contact Info</h1>
                 <div class="icons">
-                    <a href="#"><i class="fas fa-map-marker-alt"></i>34 Street Name, city name here,
+                    <a href="#"><i class="fas fa-map-marker-alt"></i>34 Street Name, Mumbai,
                      India</a>
                     <a href="#"><i class="fas fa-phone-alt"></i>+91 9619786756</a>
-                    <a href="#"><i class="fas fa-envelope"></i>example@gmail.com</a>
+                    <a href="#"><i class="fas fa-envelope"></i>fitnessfirst54@gmail.com</a>
                 </div>
             </div>
 
@@ -105,7 +103,7 @@
 
         </div>
     
-        <div class="credit">Created by <span>Adarsh</span> | all right reserved</div>
+        <div class="credit">Created by <span>Priya</span> | all right reserved</div>
 
     </section>
 

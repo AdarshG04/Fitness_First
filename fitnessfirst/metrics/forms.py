@@ -13,8 +13,8 @@ class FitnessMetricForm(forms.ModelForm):
             'hip_circumference': forms.NumberInput(attrs={'step': '0.01'}),
         }
         labels = {
-            'weight': 'Weight (kg)',
-            'height': 'Height (m)',
-            'waist_circumference': 'Waist Circumference (cm)',
-            'hip_circumference': 'Hip Circumference (cm)',
+            'weight': 'Weight (in kg) ',
+            'height': 'Height (in m) ',
+            'waist_circumference': 'Waist Circumference (in cm) ',
+            'hip_circumference': 'Hip Circumference (in cm) ',
         }
