@@ -1,0 +1,12 @@
+<!-- templates/metrics/results.html -->
+{% extends 'app/base.html' %}
+
+{% block content %}
+<section id="base" class="base">
+  <h2>Your Fitness Metrics</h2>
+  <p><strong>BMI (Body Mass Index):</strong> {{ metric.bmi }}</p>
+  <p><strong>WHR (Waist-to-Hip Ratio):</strong> {{ metric.whr }}</p>
+  <p><strong>WHtR (Waist-to-Height Ratio):</strong> {{ metric.whtr }}</p>
+  <button id="base_button" class="base_button" href="{% url 'metrics:calculate_metrics' %}">Calculate Again</button>
+  <section>
+{% endblock %}

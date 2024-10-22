@@ -1,3 +1,8 @@
+# metrics/admin.py
 from django.contrib import admin
+from .models import FitnessMetric
 
-# Register your models here.
+@admin.register(FitnessMetric)
+class FitnessMetricAdmin(admin.ModelAdmin):
+    list_display = ['user', 'bmi', 'whr', 'whtr', 'date_calculated']
+    readonly_fields = ['bmi', 'whr', 'whtr', 'date_calculated']

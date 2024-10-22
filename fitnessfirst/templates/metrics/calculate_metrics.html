@@ -1,0 +1,13 @@
+<!-- templates/metrics/calculate_metrics.html -->
+{% extends 'app/base.html' %}
+
+{% block content %}
+<section id="base" class="base">
+  <h2>Enter Your Details</h2>
+  <form method="post" class="form_page" id="form_page">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button id="base_button" class="base_button" type="submit-btn">Calculate</button>
+  </form>
+</section>
+{% endblock %}
