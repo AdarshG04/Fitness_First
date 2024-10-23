@@ -128,6 +128,46 @@ section{
     color: var(--main-color);
 }
 
+/* Dropdown */
+.header .navbar .dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.header .navbar .dropbtn {
+    cursor: pointer;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.header .navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.header .navbar .dropdown-content a {
+    color: black;
+    padding: 8px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.header .navbar .dropdown-content a:hover {
+    background-color: #828282;
+}
+
+.header .navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown */
+
 .header .icons div{
     font-size: 2.5rem;
     color: #fff;
@@ -180,6 +220,25 @@ section{
 .base h2{
     font-size: 4rem;
     padding-bottom: 2rem;
+}
+
+.base h3{
+    font-size: 3rem;
+    padding-bottom: 2rem;
+}
+
+.base .diet_page{
+    margin-bottom: 10rem;
+}
+
+.base .diet_page .diet{
+    margin-bottom: 2rem;
+}
+
+.base p span{
+    text-transform: uppercase;
+    color: var(--main-color);
+    font-weight: bold;
 }
 
 .base p{

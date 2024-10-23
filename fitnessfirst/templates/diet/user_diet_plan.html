@@ -1,0 +1,35 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<section class="base" id="base">
+  <h3>Your Assigned Diet Plan</h3>
+    {% if diet_plan %}
+
+    <div class="diet_page" id="diet_page">
+
+        <div class="diet" id="diet">
+            <p><span>Meal:</span> {{ diet_plan.diet_plan.title }}</p>
+        </div>
+
+        <div class="diet" id="diet">
+            <p><span>Diet Plan:</span> {{ diet_plan.diet_plan.description }}</p>
+        </div>
+    
+        <div class="diet" id="diet">
+            <p><span>Calories Per Day:</span> {{ diet_plan.diet_plan.calories_per_day }}</p>
+        </div>
+
+        <div class="diet" id="diet">
+            <p><span>Diet Assigned By:</span> {{ diet_plan.assigned_by }}</p>
+        </div>
+
+    </div>
+    
+    {% else %}
+
+    <p>You have not been assigned any diet plan yet.</p>
+
+  {% endif %}
+
+</section>
+{% endblock %}
