@@ -2,32 +2,52 @@
 
 {% block content %}
 <section class="base" id="base">
-  <h3>Your Assigned Diet Plan</h3>
-    {% if diet_plan %}
+  <h3>Your Diet Plan</h3>
 
-    <div class="diet_page" id="diet_page">
 
-        <div class="diet" id="diet">
-            <p><span>Meal:</span> {{ diet_plan.diet_plan.title }}</p>
-        </div>
+    {% if user_metric %}
+        <p><strong>Your BMI:</strong> {{ user_metric.bmi }}</p>
+        <p><strong>Your Gender:</strong> {{ user_metric.get_gender_display }}</p>
+        <br/>
 
-        <div class="diet" id="diet">
-            <p><span>Diet Plan:</span> {{ diet_plan.diet_plan.description }}</p>
-        </div>
+        <p><span><strong>Here is your personalized diet plan according to your Fitness Metrics</strong></span></p>
+
+        <br/>
+
+
+        {% if diet_plan %}
+
+            <div class="diet_page" id="diet_page">
+
+                <div class="diet" id="diet">
+                    <p><span>Meal:</span> {{ diet_plan.title }}</p>
+                </div>
+
+                <div class="diet" id="diet">
+                    <p><span>Diet Plan:</span> {{ diet_plan.description }}</p>
+                </div>
     
-        <div class="diet" id="diet">
-            <p><span>Calories Per Day:</span> {{ diet_plan.diet_plan.calories_per_day }}</p>
-        </div>
+                <div class="diet" id="diet">
+                    <p><span>Calories Per Day:</span> {{ diet_plan.calories_per_day }}</p>
+                </div>
 
-        <div class="diet" id="diet">
-            <p><span>Diet Assigned By:</span> {{ diet_plan.assigned_by }}</p>
-        </div>
+                {% comment %} <div class="diet" id="diet">
+                    <p><span>Diet Assigned By:</span> {{ diet_plan.assigned_by }}</p>
+                </div> {% endcomment %}
 
-    </div>
+            </div>
     
+        {% else %}
+
+            <p>Sorry, no suitable diet plan was found for your BMI and gender.</p>
+
+        {% endif %}
+
+    {% comment %} <p>You have not been assigned any diet plan yet.</p> {% endcomment %}
+
     {% else %}
-
-    <p>You have not been assigned any diet plan yet.</p>
+      <p>Please calculate your fitness metrics to get a recommended diet plan.</p>
+      <a href="{% url 'metrics:calculate_metrics' %}" class="btn">Calculate Metrics</a>
 
   {% endif %}
 
